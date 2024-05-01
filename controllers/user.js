@@ -2,27 +2,30 @@ const User = require("../models/User");
 
 const publishRides = async (req, res, next) => {
   try {
-    const { name, email } = req.body;
-    if (!name || !email) {
+    const { source, destination, date, time, vehicle, vacancy, stopoverData, token} = req.body;
+    if (!source || !destination || !date || !time || !vehicle || !vacancy) {
       res.status(400);
-      return next(new Error("name & email fields are required"));
+      return next(new Error("Fields are empty"));
     }
 
     // check if user already exists
-    const isUserExists = await User.findOne({ email });
+    //const isUserExists = await User.findOne({ email });
 
-    if (isUserExists) {
-      res.status(404);
-      return next(new Error("User already exists"));
-    }
+    // if (isUserExists) {
+    //   res.status(404);
+    //   return next(new Error("User already exists"));
+    // }
 
-    const user = await User.create({
-      name, email
+    const publishedRides = await User.create({
+      source, destination, date, time, vehicle, vacancy
     });
 
     res.status(200).json({
-      success: true,
-      user,
+      status: 200,
+      message: "success",
+      identity: "identity",
+      active_sessions: 1,
+      travel_list: publishedRides
     });
   } catch (error) {
     console.log(error);
