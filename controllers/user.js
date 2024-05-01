@@ -3,10 +3,10 @@ const User = require("../models/User");
 const publishRides = async (req, res, next) => {
   try {
     const { source, destination, date, time, vehicle, vacancy, stopoverData, token} = req.body;
-    if (!source || !destination || !date || !time || !vehicle || !vacancy) {
-      res.status(400);
-      return next(new Error("Fields are empty"));
-    }
+    // if (!source || !destination || !date || !time || !vehicle || vacancy==0) {
+    //   res.status(400);
+    //   return next(new Error("Fields are empty"));
+    // }
 
     // check if user already exists
     //const isUserExists = await User.findOne({ email });
