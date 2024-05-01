@@ -14,7 +14,7 @@ const router = express.Router();
 router.post("/", publishRides);
 
 // get all users
-router.get("/searchride", searchRides);
+router.post("/searchride", searchRides);
 
 // get a user
 router.get("/:id", getRide);
