@@ -1,23 +1,23 @@
 const express = require("express");
 const {
-  createUser,
+  publishRides,
   updateUser,
   deleteUser,
-  getUser,
-  getUsers
+  getRide,
+  searchRides
 } = require("../controllers/user");
 
 
 const router = express.Router();
 
 // create a user
-router.post("/", createUser);
+router.post("/", publishRides);
 
 // get all users
-router.get("/", getUsers);
+router.get("/searchride", searchRides);
 
 // get a user
-router.get("/:id", getUser);
+router.get("/:id", getRide);
 
 // update a user
 router.put("/:id", updateUser);
