@@ -11,7 +11,7 @@ const {
 const router = express.Router();
 
 // create a user
-router.post("/post/post-ride", publishRides);
+router.post("/postride", publishRides);
 
 // get all users
 router.post("/searchride", searchRides);
