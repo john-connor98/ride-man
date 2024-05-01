@@ -1,6 +1,6 @@
 const User = require("../models/User");
 
-const createUser = async (req, res, next) => {
+const publishRides = async (req, res, next) => {
   try {
     const { name, email } = req.body;
     if (!name || !email) {
@@ -30,13 +30,23 @@ const createUser = async (req, res, next) => {
   }
 }
 
-const getUsers = async (req, res, next) => {
+const searchRides = async (req, res, next) => {
+
+  const { source, destination, token, vacancy, date} = req.body;
+  if (!source || !destination || !vacancy || !date) {
+    res.status(400);
+    return next(new Error("fields are empty"));
+  }
+
   try {
-    const users = await User.find();
+    const rides = await User.find({ source: source, destination: destination, vacancy: vacancy, date: date}, 'source destination vacancy date');
 
     res.status(200).json({
-      success: true,
-      users,
+      status: 200,
+      message: "success",
+      identity: "identity",
+      active_sessions: 1,
+      travel_list: rides
     });
   } catch (error) {
     console.log(error);
@@ -44,7 +54,7 @@ const getUsers = async (req, res, next) => {
   }
 };
 
-const getUser = async (req, res, next) => {
+const getRide = async (req, res, next) => {
   const { id } = req.params;
   try {
     const user = await User.findById(id);
@@ -117,9 +127,9 @@ const deleteUser = async (req, res, next) => {
 };
 
 module.exports = {
-  getUser,
-  getUsers,
-  createUser,
+  getRide,
+  searchRides,
+  publishRides,
   updateUser,
   deleteUser,
 };
