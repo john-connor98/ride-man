@@ -3,7 +3,7 @@ const {
   publishRides,
   updateUser,
   deleteUser,
-  getRide,
+  fetchRide,
   searchRides
 } = require("../controllers/user");
 
@@ -17,7 +17,7 @@ router.post("/postride", publishRides);
 router.post("/searchride", searchRides);
 
 // get a user
-router.get("/:id", getRide);
+router.get("/book/ride-taskid", fetchRide);
 
 // update a user
 router.put("/:id", updateUser);

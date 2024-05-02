@@ -57,10 +57,15 @@ const searchRides = async (req, res, next) => {
   }
 };
 
-const getRide = async (req, res, next) => {
-  const { id } = req.params;
+const fetchRide = async (req, res, next) => {
+
+  const {task_id , token} = req.body;
+  if (!task_id || !token) {
+    res.status(400);
+    return next(new Error("fields are empty"));
+  }
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(task_id);
 
     if (!user) {
       res.status(404);
@@ -130,7 +135,7 @@ const deleteUser = async (req, res, next) => {
 };
 
 module.exports = {
-  getRide,
+  fetchRide,
   searchRides,
   publishRides,
   updateUser,
