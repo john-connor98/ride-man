@@ -2,7 +2,7 @@ const User = require("../models/User");
 
 const publishRides = async (req, res, next) => {
   try {
-    const { source, destination, date, time, vehicle, vacancy, stopoverData, token} = req.body;
+    const { source, destination, date, vehicle, vacancy, stopoverData, token} = req.body;
     // if (!source || !destination || !date || !time || !vehicle || vacancy==0) {
     //   res.status(400);
     //   return next(new Error("Fields are empty"));
@@ -17,7 +17,7 @@ const publishRides = async (req, res, next) => {
     // }
 
     const publishedRides = await User.create({
-      source, destination, date, time, vehicle, vacancy
+      source, destination, date, vehicle, vacancy
     });
 
     res.status(200).json({
