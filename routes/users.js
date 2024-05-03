@@ -17,7 +17,7 @@ router.post("/postride", publishRides);
 router.post("/searchride", searchRides);
 
 // get a user
-router.get("/rideid", fetchRide);
+router.post("/rideid", fetchRide);
 
 // update a user
 router.put("/:id", updateUser);
