@@ -1,4 +1,5 @@
 const User = require("../models/User");
+var mongoose = require('mongoose');
 
 const publishRides = async (req, res, next) => {
   try {
@@ -65,6 +66,7 @@ const fetchRide = async (req, res, next) => {
     return next(new Error("fields are empty"));
   }
   try {
+    objectId = mongoose.Types.ObjectId(task_id);
     const user = await User.findById(task_id);
 
     if (!user) {
