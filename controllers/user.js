@@ -82,9 +82,9 @@ const fetchRide = async (req, res, next) => {
       message: "success",
       identity: "identity",
       active_sessions: 1,
-      source,
-      destination,
-      date,
+      source: user.source,
+      destination: user.destination,
+      date: user.date,
       pickup_time: "11:34",
       drop_time: "8:30",
       distance: 8,
@@ -93,9 +93,16 @@ const fetchRide = async (req, res, next) => {
       review_count: 35,
       verified_profile: true,
       cancel_cnt: 1,
-      guideInfo,
+      guideInfo: {
+        "luggage":"Only handbag allowed",
+        "passenger":"2"
+      },
       share_url: "put url here",
-      driver_info,
+      driver_info:{
+        "name":"chetan",
+        "rating":"5",
+        "contact":"8744910956"
+      },
     });
   } catch (error) {
     console.log(error);
