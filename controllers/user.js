@@ -90,7 +90,7 @@ const fetchRide = async (req, res, next) => {
       review_count: 35,
       verified_profile: true,
       cancel_cnt: 1,
-      guideInfo: {
+      guide_info: {
         "luggage":"Only handbag allowed",
         "passenger":"2"
       },
