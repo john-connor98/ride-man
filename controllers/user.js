@@ -75,7 +75,7 @@ const fetchRide = async (req, res, next) => {
     }
 
     Map<String, String> guideInfo;
-    Map<String, String> driverInfo
+    Map<String, String> driverInfo;
 
     res.status(200).json({
       status: 200,
