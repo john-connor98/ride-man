@@ -72,9 +72,28 @@ const fetchRide = async (req, res, next) => {
       return next(new Error("User not found"));
     }
 
+    Map<String, String> guideInfo;
+    Map<String, String> driverInfo
+
     res.status(200).json({
-      success: true,
-      user,
+      status: 200,
+      message: "success",
+      identity: "identity",
+      active_sessions: 1,
+      source,
+      destination,
+      date,
+      pickup_time: "11:34",
+      drop_time: "8:30",
+      distance: 8,
+      fare: 145,
+      rating: 4,
+      review_count: 35,
+      verified_profile: true,
+      cancel_cnt: 1,
+      guideInfo,
+      share_url: "put url here",
+      driver_info,
     });
   } catch (error) {
     console.log(error);
