@@ -61,10 +61,10 @@ const searchRides = async (req, res, next) => {
 const fetchRide = async (req, res, next) => {
 
   const {task_id , token} = req.body;
-  if (!task_id || !token) {
-    res.status(400);
-    return next(new Error("fields are empty"));
-  }
+  // if (!task_id || !token) {
+  //   res.status(400);
+  //   return next(new Error("fields are empty"));
+  // }
   try {
     objectId = new mongoose.Types.ObjectId(task_id);
     const user = await User.findById(objectId);
