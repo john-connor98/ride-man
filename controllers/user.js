@@ -66,8 +66,8 @@ const fetchRide = async (req, res, next) => {
     return next(new Error("fields are empty"));
   }
   try {
-    objectId = mongoose.Types.ObjectId(task_id);
-    const user = await User.findById(task_id);
+    objectId = new mongoose.Types.ObjectId(task_id);
+    const user = await User.findById(objectId);
 
     if (!user) {
       res.status(404);
