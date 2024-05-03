@@ -74,9 +74,6 @@ const fetchRide = async (req, res, next) => {
       return next(new Error("User not found"));
     }
 
-    Map<String, String> guideInfo;
-    Map<String, String> driverInfo;
-
     res.status(200).json({
       status: 200,
       message: "success",
