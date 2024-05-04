@@ -21,8 +21,10 @@ const publishRides = async (req, res, next) => {
       source, destination, date, time, vehicle, vacancy
     });
     for(stopOver in stopoverData) {
-      console.log({stopOver: source});
-      User.create({ stopOver: source, stopOver: destination, date, time, vehicle, vacancy
+      const {stopSource, stopDestination, stopPrice} = stopOver.body;
+      console.log(stopDestination);
+     
+      User.create({ stopSource, stopDestination, date, time, vehicle, vacancy
       });
     }
 
