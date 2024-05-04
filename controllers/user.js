@@ -17,10 +17,14 @@ const publishRides = async (req, res, next) => {
     //   return next(new Error("User already exists"));
     // }
     console.log(typeof(stopoverData));
-    console.log(stopoverData);
     const publishedRides = await User.create({
       source, destination, date, time, vehicle, vacancy
     });
+    for(stopOver in stopoverData) {
+      console.log({stopOver: source});
+      User.create({ stopOver: source, stopOver: destination, date, time, vehicle, vacancy
+      });
+    }
 
     res.status(200).json({
       status: 200,
