@@ -74,6 +74,8 @@ const fetchRide = async (req, res, next) => {
       return next(new Error("User not found"));
     }
 
+    console.log(`chetan user source data ${user.source}`)
+
     res.status(200).json({
       status: 200,
       message: "success",
@@ -91,8 +93,8 @@ const fetchRide = async (req, res, next) => {
       verified_profile: true,
       cancel_cnt: 1,
       guide_info: {
-        "luggage":"Only handbag allowed",
-        "passenger":"2"
+        "luggage_details":"Only handbag allowed",
+        "seat_guide_details":"2"
       },
       share_url: "put url here",
       driver_info:{
