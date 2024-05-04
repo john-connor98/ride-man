@@ -74,7 +74,7 @@ const fetchRide = async (req, res, next) => {
       return next(new Error("User not found"));
     }
 
-    console.log(`chetan user source data ${user.source}`)
+    console.log(`chetan user source data ${typeof(user.source)}`)
 
     res.status(200).json({
       status: 200,
