@@ -17,9 +17,9 @@ const publishRides = async (req, res, next) => {
     //   return next(new Error("User already exists"));
     // }
     console.log(typeof(stopoverData));
+    stae = "published";
     const publishedRides = await User.create({
-      source, destination, date, time, vehicle, vacancy
-    });
+      source, destination, date, time, vehicle, vacancy, stae});
     for(stopOver in stopoverData) {
       const {stopSource, stopDestination, stopPrice} = stopOver.body;
       console.log(stopDestination);
@@ -48,9 +48,9 @@ const searchRides = async (req, res, next) => {
     res.status(400);
     return next(new Error("fields are empty"));
   }
-
+  da = new Date(date);
   try {
-    const rides = await User.find({ source: source, destination: destination, vacancy: vacancy, date: date}, 'source destination vacancy date');
+    const rides = await User.find({ source: source, destination: destination, vacancy: vacancy, date: da}, 'source destination vacancy date');
 
     res.status(200).json({
       status: 200,
@@ -116,29 +116,18 @@ const fetchRide = async (req, res, next) => {
   }
 };
 
-const updateUser = async (req, res, next) => {
-  const { id } = req.params;
+const fetchPublished = async (res, next) => {
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(user_id);
 
-    if (!user) {
-      res.status(404);
-      return next(new Error("User not found"));
-    }
-
-    const updatedUser = await User.findByIdAndUpdate(
-      id,
-      {
-        $set: req.body,
-      },
-      {
-        new: true,
-      }
-    );
+    // if (!user) {
+    //   res.status(404);
+    //   return next(new Error("User not found"));
+    // }
 
     res.status(200).json({
       success: true,
-      updatedUser,
+      user,
     });
   } catch (error) {
     console.log(error);
@@ -146,32 +135,37 @@ const updateUser = async (req, res, next) => {
   }
 };
 
-const deleteUser = async (req, res, next) => {
-  const { id } = req.params;
-  try {
-    const user = await User.findById(id);
+const rideCompleted = async (res, next) => {
+  // try {
+  //   const user = await User.findById(id);
 
-    if (!user) {
-      res.status(404);
-      return next(new Error("User not found"));
-    }
+  //   if (!user) {
+  //     res.status(404);
+  //     return next(new Error("User not found"));
+  //   }
 
-    await User.findByIdAndDelete(id);
+    // await User.findByIdAndDelete(id);
+    id = "";
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      {
+        $set: "state"
+      },
+      {
+        new: "completed",
+      }
+    );
 
     res.status(200).json({
       success: true,
-      message: "User has been deleted.",
+      message: "Ride marked completed",
     });
-  } catch (error) {
-    console.log(error);
-    return next(error);
-  }
 };
 
 module.exports = {
   fetchRide,
   searchRides,
   publishRides,
-  updateUser,
-  deleteUser,
+  fetchPublished,
+  rideCompleted,
 };

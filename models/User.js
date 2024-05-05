@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
       unique: false,
     },
     date: {
-      type: String,
+      type: Date,
       required: [true, "date is required"],
       unique: false,
     },
@@ -29,7 +29,12 @@ const userSchema = new mongoose.Schema(
     },
     vacancy: {
       type: String,
-      required: [true, "seats is required"],
+      required: [true, "vacancy is required"],
+      unique: false,
+    },
+    state: {
+      type: String,
+      required: [true, "state is required"],
       unique: false,
     },
   },

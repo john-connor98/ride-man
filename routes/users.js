@@ -1,8 +1,8 @@
 const express = require("express");
 const {
   publishRides,
-  updateUser,
-  deleteUser,
+  fetchPublished,
+  rideCompleted,
   fetchRide,
   searchRides
 } = require("../controllers/user");
@@ -20,9 +20,9 @@ router.post("/searchride", searchRides);
 router.post("/rideid", fetchRide);
 
 // update a user
-router.put("/:id", updateUser);
+router.get("/published", fetchPublished);
 
 // delete a user
-router.delete("/:id", deleteUser);
+router.get("/rideCompleted", rideCompleted);
 
 module.exports = router;
