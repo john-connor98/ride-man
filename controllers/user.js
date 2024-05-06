@@ -23,6 +23,11 @@ const publishRides = async (req, res, next) => {
     da = new Date(date);
     st = new Date(startT);
     et = new Date(endT);
+    console.log(da);
+    console.log(st);
+    console.log(et);
+    onsole.log(typeof(da));
+
     const publishedRides = await User.create({
       source, destination, da, st, et , vehicle, vacancy, state});
     for(stopOver in stopoverData) {
