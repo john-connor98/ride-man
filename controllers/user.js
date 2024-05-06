@@ -116,7 +116,7 @@ const fetchRide = async (req, res, next) => {
   }
 };
 
-const fetchPublished = async (res, next) => {
+const fetchPublished = async (req, res, next) => {
   try {
     const user = await User.find();
 
