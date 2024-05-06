@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 const publishRides = async (req, res, next) => {
   try {
-    const { source, destination, date, time, vehicle, vacancy, stopoverData, token} = req.body;
+    const { source, destination, date, time, vehicle, vacancy, startTime, endTime, stopoverData, token} = req.body;
     // if (!source || !destination || !date || !time || !vehicle || vacancy==0) {
     //   res.status(400);
     //   return next(new Error("Fields are empty"));
@@ -18,8 +18,10 @@ const publishRides = async (req, res, next) => {
     // }
     console.log(typeof(stopoverData));
     state = "published";
+    startT = date + " " + startTime;
+    endT = date + " " + endTime;
     const publishedRides = await User.create({
-      source, destination, date, time, vehicle, vacancy, state});
+      source, destination, date, startT, endT , vehicle, vacancy, state});
     for(stopOver in stopoverData) {
       const {stopSource, stopDestination, stopPrice} = stopOver.body;
       console.log(stopDestination);
