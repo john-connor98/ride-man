@@ -118,7 +118,7 @@ const fetchRide = async (req, res, next) => {
 
 const fetchPublished = async (res, next) => {
   try {
-    const user = await User.findById(user_id);
+    const user = await User.find();
 
     // if (!user) {
     //   res.status(404);
