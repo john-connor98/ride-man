@@ -17,9 +17,14 @@ const userSchema = new mongoose.Schema(
       required: [true, "date is required"],
       unique: false,
     },
-    time: {
-      type: String,
-      required: [true, "time is required"],
+    starttime: {
+      type: Date,
+      required: [true, "starttime is required"],
+      unique: false,
+    },
+    endtime: {
+      type: Date,
+      required: [true, "endtime is required"],
       unique: false,
     },
     vehicle: {
