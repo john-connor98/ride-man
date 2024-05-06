@@ -26,7 +26,7 @@ const publishRides = async (req, res, next) => {
     console.log(da);
     console.log(st);
     console.log(et);
-    onsole.log(typeof(da));
+    console.log(typeof(da));
 
     const publishedRides = await User.create({
       source, destination, da, st, et , vehicle, vacancy, state});
